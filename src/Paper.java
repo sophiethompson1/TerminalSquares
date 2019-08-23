@@ -38,7 +38,9 @@ public class Paper {
     for(int y = 0; y < height*2 - 1; y++) {
       for(int x = 0; x < width*2 - 1; x++) {
         output += plane[y][x];
+        output += ' ';
       }
+      output += '\n';
       output += '\n';
     }
     System.out.println(output);
