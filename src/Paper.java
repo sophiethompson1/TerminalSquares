@@ -89,7 +89,7 @@ public class Paper {
     return x % 2 == 1 && y % 2 == 1; //depends if you index beginning from 1 or 0
   }
 
-  public char whoWon() {
+  public char charWon() {
     int BC = 0;
     int RC = 0;
     for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
