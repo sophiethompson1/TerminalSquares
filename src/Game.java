@@ -48,8 +48,10 @@ public class Game {
     int x = 0;
     int y = 0;
     int count = 0;
+    int howManyFilledIn = 0;
 
     while(!paper.isFinished()) {
+      System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
       if (count % 2 == 0) {
         System.out.println(player1.getName() + "'s Turn");
       } else {
@@ -69,7 +71,14 @@ public class Game {
         c = player2.getMark();
       }
       paper.makeMark(c, x, y);
-      paper.fillIn(c);
+      howManyFilledIn = paper.fillIn(c);
+      for (int i = 0; i < howManyFilledIn; i++) {
+        if (count % 2 == 0) {
+          player1.scored();
+        } else {
+          player2.scored();
+        }
+      }
       paper.printPaper();
       count++;
     }

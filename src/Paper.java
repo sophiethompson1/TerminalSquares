@@ -64,14 +64,17 @@ public class Paper {
 
   }
 
-  public void fillIn(char c) {
+  public int fillIn(char c) {
+    int count = 0;
     for (int y = 1; y < height*2 - 2; y = y + 2) { //may as well start from 1
       for (int x = 1; x < width*2 - 2; x = x + 2) {
         if (needsToBeFilled(x, y)) {
           makeMark(c, x, y);
+          count++;
         }
       }
     }
+    return count;
   }
 
   public boolean isFinished() {

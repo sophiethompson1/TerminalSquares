@@ -16,6 +16,10 @@ public class Player {
     return colour;
   }
 
+  public int getScore() {
+    return score;
+  }
+
   public void scored() {
     score++;
   }

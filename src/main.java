@@ -8,7 +8,7 @@ public class main {
     System.out.println("Player Number 1 name: ");
     String player1Name = input.nextLine();
     String colour1 = " ";
-    while (!colour1.equals("red") && !colour1.equals("blue")) {
+    while (!utils.isColour(colour1)) {
       System.out.println("Player Number 1 colour: ");
       colour1 = input.nextLine();
     }
@@ -17,7 +17,7 @@ public class main {
     System.out.println("Player Number 2 name: ");
     String player2Name = input.nextLine();
     String colour2 = " ";
-    while ((!colour2.equals("red") && !colour2.equals("blue")) || colour2.equals(colour1)) {
+    while (!utils.isColour(colour2) || colour2.equals(colour1)) {
       System.out.println("Player Number 2 colour: ");
       colour2 = input.nextLine();
     }
@@ -25,7 +25,7 @@ public class main {
     //making player objects
     Player player1;
     Player player2;
-    if (colour1.equals("red")) {
+    if (utils.isRed(colour1)) {
       player1 = new Player(player1Name, Colour.RED);
       player2 = new Player(player2Name, Colour.BLUE);
     } else {
