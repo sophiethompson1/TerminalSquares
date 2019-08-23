@@ -114,21 +114,6 @@ public class Paper {
   }
 
   public static void main(String[] args) {
-    Paper paper = new Paper(3, 3);
-    Scanner input = new Scanner(System.in);
-    int x = 0;
-    int y = 0;
-    while(!paper.isFinished()) {
-      while (paper.isCorner(x, y) || !paper.isBlank(x, y) || paper.isMiddle(x, y)) { //if both even then it is a corner
-        System.out.println("X: ");
-        x = Integer.parseInt(input.nextLine());
-        System.out.println("Y: ");
-        y = Integer.parseInt(input.nextLine());
-      }
-      paper.makeMark('B', x, y);
-      paper.fillIn('B');
-      paper.printPaper();
-    }
 
   } // this cycle works
 
