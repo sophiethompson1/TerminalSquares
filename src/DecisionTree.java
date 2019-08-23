@@ -14,13 +14,16 @@ public class DecisionTree {
   }
 
   public void makeDecisionTree() {
-    Paper paper = this.game.getPaper();
+    TestingPaper paper = (TestingPaper) this.game.getPaper();
 
     //need to go through grid and all empty
     //slots need to work out best place
     for (int y = 0; y < paper.getHeight(); y++) {
       for (int x = 0; x < paper.getWidth(); x++) {
         if(paper.isMarkable(x, y)) {
+          paper.makeMark(x, y);
+
+        }
       }
     }
   }
