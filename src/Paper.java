@@ -63,8 +63,8 @@ public class Paper {
   }
 
   public void fillIn(char c) {
-    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width*(2 - 1); x = x + 2) {
+    for (int y = 1; y < height*2 - 2; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width*2 - 2; x = x + 2) {
         if (needsToBeFilled(x, y)) {
           makeMark(c, x, y);
         }
