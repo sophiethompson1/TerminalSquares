@@ -15,5 +15,18 @@ public class Move {
     return y;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Move)) {
+      return false;
+    } else {
+      return x == ((Move) o).getX() && y == ((Move) o).getY();
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return x + y;
+  }
   //do we need set methods
 }

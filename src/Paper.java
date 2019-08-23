@@ -58,6 +58,15 @@ public class Paper {
     return plane[y][x] == ' ';
   }
 
+  public boolean isMiddle(int x, int y) {
+    return x % 2 == 1 && y % 2 == 1; //depends if you index beginning from 1 or 0
+  }
+
+  public boolean isMarkable(int x, int y) {
+    return isBlank(x, y) && !isCorner(x, y) && !isMiddle(x, y);
+  }
+
+
   public boolean needsToBeFilled(int x, int y) {
     //need to write an assert comment here
     return plane[y][x - 1] != ' ' && plane[y][x + 1] != ' ' && plane[y - 1][x] != ' ' && plane[y + 1][x] != ' ';
@@ -86,10 +95,6 @@ public class Paper {
       }
     }
     return true;
-  }
-
-  public boolean isMiddle(int x, int y) {
-    return x % 2 == 1 && y % 2 == 1; //depends if you index beginning from 1 or 0
   }
 
   public char charWon() {
