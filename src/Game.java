@@ -51,6 +51,43 @@ public class Game {
     System.out.println("\nInitial Grid: ");
     paper.printPaper();
 
+    //turns begin
+    int x = 0;
+    int y = 0;
+    int count = 0;
+
+    while(!paper.isFinished()) {
+      if (count % 2 == 0) {
+        System.out.println(player1.getName() + "'s Turn");
+      } else {
+        System.out.println(player2.getName() + "'s Turn");
+      }
+
+      while (paper.isCorner(x, y) || !paper.isBlank(x, y) || paper.isMiddle(x, y)) { //if both even then it is a corner
+        System.out.println("X: ");
+        x = Integer.parseInt(input.nextLine());
+        System.out.println("Y: ");
+        y = Integer.parseInt(input.nextLine());
+      }
+      char c = ' ';
+      if (count % 2 == 0) {
+        c = player1.getMark();
+      } else {
+        c = player2.getMark();
+      }
+      paper.makeMark(c, x, y);
+      paper.fillIn(c);
+      paper.printPaper();
+      count++;
+    }
+    System.out.println("GAME IS FINISHED");
+    char winner = paper.whoWon();
+    if (winner == player1.getMark()) {
+      System.out.println(player1.getName() + " won!!");
+    } else {
+      System.out.println(player2.getName() + " won!!");
+    }
+
   }
 
 }

@@ -73,8 +73,8 @@ public class Paper {
   }
 
   public boolean isFinished() {
-    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width * (2 - 1); x = x + 2) {
+    for (int y = 1; y < height*2 - 2; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width *2 - 2; x = x + 2) {
         if (plane[y][x] == ' '){
           return false;
         }
@@ -85,6 +85,27 @@ public class Paper {
 
   public boolean isMiddle(int x, int y) {
     return x % 2 == 1 && y % 2 == 1; //depends if you index beginning from 1 or 0
+  }
+
+  public char whoWon() {
+    int BC = 0;
+    int RC = 0;
+    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width * (2 - 1); x = x + 2) {
+        if (plane[y][x] == 'B'){
+          BC++;
+        } else {
+          RC++;
+        }
+      }
+    }
+    if (BC > RC) {
+      return 'B';
+    } else if (RC > BC) {
+      return 'R';
+    } else {
+      return 'T';
+    }
   }
 
   public static void main(String[] args) {
