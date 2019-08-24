@@ -45,42 +45,33 @@ public class Game {
     paper.printPaper();
 
     //turns begin
-    int count = 0;
+    Player whoseTurn = player1;
     int howManyFilledIn = 0;
 
     while(!paper.isFinished()) {
       Move move;
       System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
-      if (count % 2 == 0) {
-        System.out.println(player1.getName() + "'s Turn");
-        move = player1.takeTurn(this.paper);
-      } else {
-        System.out.println(player2.getName() + "'s Turn");
-        move = player2.takeTurn(this.paper);
-      }
+      System.out.println(whoseTurn.getName() + "'s Turn");
+      move = whoseTurn.takeTurn(this.paper);
+      char c = whoseTurn.getMark();
 
-      char c = ' ';
-      if (count % 2 == 0) {
-        c = player1.getMark();
-      } else {
-        c = player2.getMark();
-      }
       paper.makeMark(c, move.getX(), move.getY());
       howManyFilledIn = paper.fillIn(c);
       for (int i = 0; i < howManyFilledIn; i++) {
-        if (count % 2 == 0) {
-          player1.scored();
-        } else {
-          player2.scored();
-        }
+        whoseTurn.scored();
       }
+
+      if (whoseTurn == player1) {
+        whoseTurn = player2;
+      } else {
+        whoseTurn = player1;
+      }
+
       paper.printPaper();
-      count++;
     }
 
     System.out.println("GAME IS FINISHED");
     System.out.println(this.whoWon().getName() + " has Won!");
-
   }
 
   public void runCTGame() {
@@ -90,7 +81,6 @@ public class Game {
     paper.printPaper();
 
     //turns begin
-    int count = 0;
     int howManyFilledIn = 0;
     Player whoseTurn = player1;
 
@@ -114,7 +104,6 @@ public class Game {
         }
       }
       paper.printPaper();
-      count++;
     }
 
     System.out.println("GAME IS FINISHED");
