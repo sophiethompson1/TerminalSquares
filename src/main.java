@@ -96,8 +96,8 @@ public class main {
   public static void main(String argc[]) {
     Scanner input = new Scanner(System.in);
     String gameMode = " ";
-    while (gameMode.equals("1") && !gameMode.equals("2")) {
-      System.out.println("1. Player vs Player \n 2.Player Vs AI \n");
+    while (!gameMode.equals("1") && !gameMode.equals("2")) {
+      System.out.println("1. Player vs Player \n2. Player Vs AI \n");
       gameMode = input.nextLine();
     }
     if (gameMode.equals("1")) {

@@ -78,30 +78,24 @@ public class Paper {
       if (y > 1) { //wont have a square above it being careful of array access
         if (this.hasBeenMarked(x - 1, y - 1) && this.hasBeenMarked(x, y -2) && this.isMarkable(x + 1, y -1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x, y - 2) && this.hasBeenMarked(x + 1, y -1) && this.isMarkable(x - 1, y -1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked( x +1, y - 1) && this.isMarkable(x, y -2)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
       }
       //square below
       if (y < height - 1) { //dpesnt have a square below careful of array access
         if (this.hasBeenMarked(x -1 , y +1) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x, y +2)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x -1, y +1) && this.hasBeenMarked(x, y + 2) && this.isMarkable(x + 1, y + 1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x -1, y +1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
       }
     } else if (x%2 == 0 && y %2 == 1) { //this is a dash like |
@@ -110,15 +104,12 @@ public class Paper {
       if (x > 1) { //makes sure its not side array access
         if (this.hasBeenMarked(x -1, y -1) && this.hasBeenMarked(x -1, y + 1) && this.isMarkable(x -2, y)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x -1, y -1) && this.hasBeenMarked(x -2, y) && this.isMarkable(x -1, y + 1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x -1, y+1) && this.hasBeenMarked(x -2 , y) && this.isMarkable(x -1, y - 1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
       }
 
@@ -126,15 +117,12 @@ public class Paper {
       if (x < width - 1) {
         if (this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x + 2, y)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked( x + 1, y - 1) && this.hasBeenMarked( x + 2, y) && this.isMarkable(x + 1, y +1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
         if (this.hasBeenMarked(x + 1, y + 1) && this.hasBeenMarked( x + 2, y) && this.isMarkable(x + 1, y - 1)) {
           count++;
-          System.out.println("Boo" + x + y);
         }
       }
     }
@@ -149,14 +137,12 @@ public class Paper {
       if (y > 1) { //wont have a square above it being careful of array access
         if (this.hasBeenMarked(x - 1, y - 1) && this.hasBeenMarked(x, y -2) && this.hasBeenMarked(x + 1, y -1)) {
           count++;
-          System.out.println("Woo1" + x + y);
         }
       }
       //square below
       if (y < height - 1) { //dpesnt have a square below careful of array access
         if (this.hasBeenMarked(x -1 , y +1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x, y +2)) {
           count++;
-          System.out.println("Woo" + x + y);
         }
       }
     } else if (x%2 == 0 && y %2 == 1) { //this is a dash like |
@@ -165,7 +151,6 @@ public class Paper {
       if (x > 1) { //makes sure its not side array access
         if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked(x -1, y + 1) && this.hasBeenMarked(x -2, y)) {
           count++;
-          System.out.println("Woo7" + x + y);
         }
       }
 
@@ -173,7 +158,6 @@ public class Paper {
       if (x < width - 1) {
         if (this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x + 2, y)) {
           count++;
-          System.out.println("Woo10" + x + y);
         }
       }
     }
