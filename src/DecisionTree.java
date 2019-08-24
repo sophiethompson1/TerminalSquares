@@ -4,14 +4,23 @@ public class DecisionTree {
   private PriorityQueue<TreeLeaf> queue;
   //private Game game;
   private Paper paper;
+  private Rules rules;
 
-  public DecisionTree(Paper paper) {
+  public DecisionTree(Paper paper, Rules rules) {
     this.paper = paper;
     this.queue = new PriorityQueue<TreeLeaf>();
   }
 
   public Move getBestMove() {
     return this.queue.poll().getMove();
+  }
+
+  public void makeDecisionTree() {
+    if (rules = Rules.ODPT) {
+      makeODPTDecisionTree();
+    } else if (rules = Rules.CT) {
+      makeCTDecisionTree();
+    }
   }
 
   public void makeODPTDecisionTree() {
@@ -24,7 +33,7 @@ public class DecisionTree {
       for (int x = 0; x < paper.getWidth(); x++) {
         if(paper.isMarkable(x, y)) {
           workingBase -= paper.madeAThree(x, y);
-          workingBase -= paper.howManyTwosMade(int x, int y);
+          //workingBase -= paper.howManyTwosMade(int x, int y);
           workingBase += paper.howManySquaresMade(x, y);
           TreeLeaf leaf = new TreeLeaf(new Move(x, y), workingBase);
           this.queue.add(leaf);

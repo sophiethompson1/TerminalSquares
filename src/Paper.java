@@ -185,7 +185,7 @@ public class Paper {
         }
       }
     }
-    return count*0.5;
+    return count;
   }
 
   public int howManySquaresMade(int x, int y ) {

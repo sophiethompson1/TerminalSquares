@@ -47,12 +47,8 @@ public class main {
     //create paper object and print original grid
     Paper paper = new Paper(width, height);
 
-    Game game = new Game(player1, player2, paper);
-    if (rules.equals("ODPT")) {
-      game.runODPTGame();
-    } else if (rules.equals("CT")) {
-      game.runCTGame();
-    }
+    Game game = new Game(player1, player2, paper, getRuleType(rules));
+    game.runGame();
   }
 
   public static void personVsAI(String rules) {
@@ -92,13 +88,19 @@ public class main {
     //create paper object and print original grid
     Paper paper = new Paper(width, height);
 
-    Game game = new Game(player1, player2, paper);
-    if (rules.equals("ODPT")) {
-      game.runODPTGame();
-    } else if (rules.equals("CT")) {
-      game.runCTGame();
-    }
+    Game game = new Game(player1, player2, paper, getRuleType(rules));
+    game.runGame();
 
+  }
+
+  public static Rules getRuleType(String str) {
+    if (str.equals("CT")) {
+      return Rules.CT;
+    } else if (str.equals("ODPT")) {
+      return Rules.ODPT;
+    } else {
+      return null;
+    }
   }
 
   public static void main(String argc[]) {

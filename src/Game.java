@@ -4,17 +4,20 @@ public class Game {
   private Player player1;
   private Player player2;
   private Paper paper;
+  private Rules rules;
 
-  public Game(Player player1, Player player2, Paper paper) {
+  public Game(Player player1, Player player2, Paper paper, Rules rules) {
     this.player1 = player1;
     this.player2 = player2;
     this.paper = paper;
+    this.rules = rules;
   }
 
-  public Game(Player player1, Player player2) {
+  public Game(Player player1, Player player2, Rules rules) {
     this.player1 = player1;
     this.player2 = player2;
     this.paper = new Paper(4, 4);
+    this.rules = rules;
   }
 
   public Paper getPaper() {
@@ -29,12 +32,24 @@ public class Game {
     return player2;
   }
 
+  public Rules getRules() {
+    return rules;
+  }
+
   public Player whoWon() {
     char winner = paper.charWon();
     if (winner == player1.getMark()) {
       return player1;
     } else {
       return player2;
+    }
+  }
+
+  public void runGame() {
+    if (rules == Rules.ODPT) {
+      runODPTGame();
+    } else if (rules == Rules.CT) {
+      runCTGame();
     }
   }
 
