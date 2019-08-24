@@ -151,26 +151,10 @@ public class Paper {
           count++;
           System.out.println("Woo1" + x + y);
         }
-        if (this.hasBeenMarked(x, y - 2) && this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x - 1, y -1)) {
-          count++;
-          System.out.println("Woo2" + x + y);
-        }
-        if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked( x +1, y - 1) && this.hasBeenMarked(x, y -2)) {
-          count++;
-          System.out.println("Woo3" + x + y);
-        }
       }
       //square below
       if (y < height - 1) { //dpesnt have a square below careful of array access
         if (this.hasBeenMarked(x -1 , y +1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x, y +2)) {
-          count++;
-          System.out.println("Woo" + x + y);
-        }
-        if (this.hasBeenMarked(x -1, y +1) && this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y + 1)) {
-          count++;
-          System.out.println("Woo" + x + y);
-        }
-        if (this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x -1, y +1)) {
           count++;
           System.out.println("Woo" + x + y);
         }
@@ -190,14 +174,6 @@ public class Paper {
         if (this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x + 2, y)) {
           count++;
           System.out.println("Woo10" + x + y);
-        }
-        if (this.hasBeenMarked( x + 1, y - 1) && this.hasBeenMarked( x + 2, y) && this.hasBeenMarked(x + 1, y +1)) {
-          count++;
-          System.out.println("Woo11" + x + y);
-        }
-        if (this.hasBeenMarked(x + 1, y + 1) && this.hasBeenMarked( x + 2, y) && this.hasBeenMarked(x + 1, y - 1)) {
-          count++;
-          System.out.println("Woo12" + x + y);
         }
       }
     }
