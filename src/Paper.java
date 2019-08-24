@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Paper {
   private final int width;
   private final int height;
-  protected char[][] plane;
+  private char[][] plane;
 
   public Paper(int w, int h) {
     assert (w > 2) && (h > 2) : "not large enough";

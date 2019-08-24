@@ -68,13 +68,13 @@ public class main {
     }
 
     Player player1;
-    AIPlayer player2;
+    Player player2;
     if(utils.isRed(colour1)){
       player1 = new Player(player1Name, Colour.RED);
-      player2 = new AIPlayer(Colour.BLUE);
+      player2 = new Player(Colour.BLUE);
     } else {
       player1 = new Player(player1Name, Colour.BLUE);
-      player2 = new AIPlayer(Colour.RED);
+      player2 = new Player(Colour.RED);
 
     }
 
