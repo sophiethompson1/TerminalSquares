@@ -98,7 +98,7 @@ public class main {
     String gameMode = " ";
     while (gameMode.equals("1") && !gameMode.equals("2")) {
       System.out.println("1. Player vs Player \n 2.Player Vs AI \n");
-      String gameMode = input.nextLine();
+      gameMode = input.nextLine();
     }
     if (gameMode.equals("1")) {
       personVsPerson();

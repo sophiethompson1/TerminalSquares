@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Player {
   private final String name;
   private final Colour colour;
@@ -22,13 +24,15 @@ public class Player {
 
   public Move takeTurn(Paper paper) {
     Scanner input = new Scanner(System.in);
-
+    int x = 0;
+    int y = 0;
     while (paper.isCorner(x, y) || !paper.isBlank(x, y) || paper.isMiddle(x, y)) { //if both even then it is a corner
       System.out.println("X: ");
       x = Integer.parseInt(input.nextLine());
       System.out.println("Y: ");
       y = Integer.parseInt(input.nextLine());
     }
+    return new Move(x, y);
   }
 
   public void scored() {

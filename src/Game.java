@@ -17,11 +17,6 @@ public class Game {
     this.paper = new Paper(4, 4);
   }
 
-  public Game(Player player1) {
-    this.player1 = player1;
-    this.player2 =
-  }
-
   public Paper getPaper() {
     return paper;
   }
@@ -43,15 +38,13 @@ public class Game {
     }
   }
 
-  public void runNormalGame() {
+  public void runGame() {
     Scanner input = new Scanner(System.in);
 
     System.out.println("\nInitial Grid: ");
     paper.printPaper();
 
     //turns begin
-    int x = 0;
-    int y = 0;
     int count = 0;
     int howManyFilledIn = 0;
 
@@ -60,10 +53,10 @@ public class Game {
       System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
       if (count % 2 == 0) {
         System.out.println(player1.getName() + "'s Turn");
-        move = player1.takeTurn();
+        move = player1.takeTurn(this.paper);
       } else {
         System.out.println(player2.getName() + "'s Turn");
-        move = player2.takeTurn();
+        move = player2.takeTurn(this.paper);
       }
 
       char c = ' ';
@@ -72,7 +65,7 @@ public class Game {
       } else {
         c = player2.getMark();
       }
-      paper.makeMark(c, x, y);
+      paper.makeMark(c, move.getX(), move.getY());
       howManyFilledIn = paper.fillIn(c);
       for (int i = 0; i < howManyFilledIn; i++) {
         if (count % 2 == 0) {
