@@ -126,7 +126,66 @@ public class Paper {
         }
       }
     }
-    return count;
+    return count*2;
+  }
+
+  public int howManyTwosMade(int x, int y) {
+    int count = 0;
+    if (x%2 == 1 && y%2 == 0) { //this is a sideways dash -
+      //check square above and below
+      //square above
+      if (y > 1) { //wont have a square above it being careful of array access
+        if (this.hasBeenMarked(x - 1, y - 1) && this.isMarkable(x, y -2) && this.isMarkable(x + 1, y -1)) {
+          count++;
+        }
+        if (this.hasBeenMarked(x, y - 2) && this.isMarkable(x + 1, y -1) && this.isMarkable(x - 1, y -1)) {
+          count++;
+        }
+        if (this.isMarkable(x - 1, y -1) && this.hasBeenMarked( x +1, y - 1) && this.isMarkable(x, y -2)) {
+          count++;
+        }
+      }
+      //square below
+      if (y < height - 1) { //dpesnt have a square below careful of array access
+        if (this.hasBeenMarked(x -1 , y +1) && this.isMarkable(x + 1, y +1) && this.isMarkable(x, y +2)) {
+          count++;
+        }
+        if (this.isMarkable(x -1, y +1) && this.hasBeenMarked(x, y + 2) && this.isMarkable(x + 1, y + 1)) {
+          count++;
+        }
+        if (this.isMarkable(x, y + 2) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x -1, y +1)) {
+          count++;
+        }
+      }
+    } else if (x%2 == 0 && y %2 == 1) { //this is a dash like |
+      //square to left and right
+      //left of dahs
+      if (x > 1) { //makes sure its not side array access
+        if (this.hasBeenMarked(x -1, y -1) && this.isMarkable(x -1, y + 1) && this.isMarkable(x -2, y)) {
+          count++;
+        }
+        if (this.isMarkable(x -1, y -1) && this.hasBeenMarked(x -2, y) && this.isMarkable(x -1, y + 1)) {
+          count++;
+        }
+        if (this.hasBeenMarked(x -1, y+1) && this.isMarkable(x -2 , y) && this.isMarkable(x -1, y - 1)) {
+          count++;
+        }
+      }
+
+      //right of it
+      if (x < width - 1) {
+        if (this.hasBeenMarked(x + 1, y -1) && this.isMarkable(x + 1, y +1) && this.isMarkable(x + 2, y)) {
+          count++;
+        }
+        if (this.isMarkable( x + 1, y - 1) && this.hasBeenMarked( x + 2, y) && this.isMarkable(x + 1, y +1)) {
+          count++;
+        }
+        if (this.hasBeenMarked(x + 1, y + 1) && this.isMarkable( x + 2, y) && this.isMarkable(x + 1, y - 1)) {
+          count++;
+        }
+      }
+    }
+    return count*0.5;
   }
 
   public int howManySquaresMade(int x, int y ) {
@@ -161,7 +220,7 @@ public class Paper {
         }
       }
     }
-    return count;
+    return count*2;
   }
 
   public boolean needsToBeFilled(int x, int y) {
@@ -227,8 +286,5 @@ public class Paper {
     }
   }
 
-  public static void main(String[] args) {
-
-  } // this cycle works
 
 }
