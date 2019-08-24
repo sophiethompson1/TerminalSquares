@@ -5,10 +5,10 @@ public class Paper {
   private final int height;
   protected char[][] plane;
 
-  public Paper(int width, int height) {
-    assert (width > 2) && (height > 2) : "not large enough";
-    this.width = width;
-    this.height = height;
+  public Paper(int w, int h) {
+    assert (w > 2) && (h > 2) : "not large enough";
+    this.width = w*2 - 1;
+    this.height = h*2 - 1;
     this.initialisePaper();
   }
 
@@ -21,9 +21,9 @@ public class Paper {
   }
 
   private void initialisePaper() {
-    plane = new char[height*2 - 1][width*2 - 1];
-    for(int y = 0; y < height*2 - 1; y++) {
-      for(int x = 0; x < width*2 - 1; x++) {
+    plane = new char[height][width];
+    for(int y = 0; y < height; y++) {
+      for(int x = 0; x < width; x++) {
         if(y % 2 == 0 && x % 2 == 0) {
           plane[y][x] = 'o';
         } else {
@@ -35,8 +35,8 @@ public class Paper {
 
   public void printPaper() {
     String output = "";
-    for(int y = 0; y < height*2 - 1; y++) {
-      for(int x = 0; x < width*2 - 1; x++) {
+    for(int y = 0; y < height; y++) {
+      for(int x = 0; x < width; x++) {
         output += plane[y][x];
         output += ' ';
       }
@@ -188,8 +188,8 @@ public class Paper {
 
   public int howManyMiddleEmpty() {
     int count = 0;
-    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width * (2 - 1); x = x + 2) {
+    for (int y = 1; y < height - 1; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width - 1; x = x + 2) {
         if (plane[y][x] == ' '){
           count++;
         }
@@ -200,8 +200,8 @@ public class Paper {
 
   public int fillIn(char c) {
     int count = 0;
-    for (int y = 1; y < height*2 - 2; y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width*2 - 2; x = x + 2) {
+    for (int y = 1; y < height - 1; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width - 1; x = x + 2) {
         if (needsToBeFilled(x, y)) {
           makeMark(c, x, y);
           count++;
@@ -212,8 +212,8 @@ public class Paper {
   }
 
   public boolean isFinished() {
-    for (int y = 1; y < height*2 - 2; y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width *2 - 2; x = x + 2) {
+    for (int y = 1; y < height - 1; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width - 1; x = x + 2) {
         if (plane[y][x] == ' '){
           return false;
         }
@@ -225,8 +225,8 @@ public class Paper {
   public char charWon() {
     int BC = 0;
     int RC = 0;
-    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
-      for (int x = 1; x < width * (2 - 1); x = x + 2) {
+    for (int y = 1; y < height - 1; y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width - 1; x = x + 2) {
         if (plane[y][x] == 'B'){
           BC++;
         } else {

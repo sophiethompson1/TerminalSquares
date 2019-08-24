@@ -29,7 +29,7 @@ public class TreeLeaf implements Comparable<TreeLeaf> {
   public int compareTo(TreeLeaf leaf) {
     if (this.goodIdea < leaf.goodIdea) { //it is bigger in effect if its smaller
       return 1;
-    } else if (this.goodIdea < leaf.goodIdea) {
+    } else if (this.goodIdea > leaf.goodIdea) {
       return -1;
     } else {
       return 0;

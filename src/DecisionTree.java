@@ -19,25 +19,26 @@ public class DecisionTree {
 
     int baseGoodIdea = paper.howManyMiddleEmpty();
     int workingBase = baseGoodIdea;
+    System.out.println(baseGoodIdea);
     //need to go through grid and all empty
     //slots need to work out best place
     for (int y = 0; y < paper.getHeight(); y++) {
       for (int x = 0; x < paper.getWidth(); x++) {
+        System.out.println("X: " + x + "Y: " + y);
         if(paper.isMarkable(x, y)) {
-          workingBase += paper.madeAThree(x, y);
-          workingBase -= paper.howManySquaresMade(x, y);
+          workingBase -= paper.madeAThree(x, y);
+          workingBase += paper.howManySquaresMade(x, y);
+          System.out.println("Total for " + x + " " + y + " " + workingBase);
           TreeLeaf leaf = new TreeLeaf(new Move(x, y), workingBase);
           this.queue.add(leaf);
         }
+        workingBase = baseGoodIdea; //resets number
       }
     }
   }
 
   public static void main(String[] args) {
     Paper paper = new Paper(3, 3);
-    DecisionTree dt = new DecisionTree(paper);
-    dt.makeDecisionTree();
-    System.out.println(dt.getBestMove().toString());
     paper.makeMark('B', 1, 0);
     paper.makeMark('B', 3, 0);
     paper.makeMark('B', 0, 1);
