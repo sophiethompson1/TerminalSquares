@@ -79,7 +79,7 @@ public class Game {
     }
 
     System.out.println("GAME IS FINISHED");
-    System.out.println(this.whoWon().getName() + "has Won!");
+    System.out.println(this.whoWon().getName() + " has Won!");
 
   }
 
@@ -92,12 +92,12 @@ public class Game {
     //turns begin
     int count = 0;
     int howManyFilledIn = 0;
+    Player whoseTurn = player1;
 
     while(!paper.isFinished()) {
-      Player whoseTurn = player1;
       Move move;
       System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
-      System.out.println(player2.getName() + "'s Turn");
+      System.out.println(whoseTurn.getName() + "'s Turn");
       move = whoseTurn.takeTurn(this.paper);
       char c = whoseTurn.getMark();
 
@@ -118,7 +118,7 @@ public class Game {
     }
 
     System.out.println("GAME IS FINISHED");
-    System.out.println(this.whoWon().getName() + "has Won!");
+    System.out.println(this.whoWon().getName() + " has Won!");
 
   }
 
