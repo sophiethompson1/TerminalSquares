@@ -38,7 +38,7 @@ public class Game {
     }
   }
 
-  public void runGame() {
+  public void runODPTGame() {
     Scanner input = new Scanner(System.in);
 
     System.out.println("\nInitial Grid: ");
@@ -72,6 +72,45 @@ public class Game {
           player1.scored();
         } else {
           player2.scored();
+        }
+      }
+      paper.printPaper();
+      count++;
+    }
+
+    System.out.println("GAME IS FINISHED");
+    System.out.println(this.whoWon().getName() + "has Won!");
+
+  }
+
+  public void runCTGame() {
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("\nInitial Grid: ");
+    paper.printPaper();
+
+    //turns begin
+    int count = 0;
+    int howManyFilledIn = 0;
+
+    while(!paper.isFinished()) {
+      Player whoseTurn = player1;
+      Move move;
+      System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
+      System.out.println(player2.getName() + "'s Turn");
+      move = whoseTurn.takeTurn(this.paper);
+      char c = whoseTurn.getMark();
+
+      paper.makeMark(c, move.getX(), move.getY());
+      howManyFilledIn = paper.fillIn(c);
+      for (int i = 0; i < howManyFilledIn; i++) {
+        whoseTurn.scored();
+      }
+      if(howManyFilledIn == 0) {
+        if (whoseTurn == player1) {
+          whoseTurn = player2;
+        } else {
+          whoseTurn = player1;
         }
       }
       paper.printPaper();

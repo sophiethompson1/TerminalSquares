@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class main {
 
-  public static void personVsPerson() {
+  public static void personVsPerson(String rules) {
     Scanner input = new Scanner(System.in);
     //player 1
     System.out.println("Player Number 1 name: ");
@@ -48,10 +48,14 @@ public class main {
     Paper paper = new Paper(width, height);
 
     Game game = new Game(player1, player2, paper);
-    game.runGame();
+    if (rules.equals("ODPT")) {
+      game.runODPTGame();
+    } else if (rules.equals("CT")) {
+      game.runCTGame();
+    }
   }
 
-  public static void personVsAI() {
+  public static void personVsAI(String rules) {
     Scanner input = new Scanner(System.in);
 
     //player 1
@@ -89,21 +93,36 @@ public class main {
     Paper paper = new Paper(width, height);
 
     Game game = new Game(player1, player2, paper);
-    game.runGame();
+    if (rules.equals("ODPT")) {
+      game.runODPTGame();
+    } else if (rules.equals("CT")) {
+      game.runCTGame();
+    }
 
   }
 
   public static void main(String argc[]) {
     Scanner input = new Scanner(System.in);
     String gameMode = " ";
-    while (!gameMode.equals("1") && !gameMode.equals("2")) {
+    String rules = " ";
+    while (!gameMode.equals("1") && !gameMode.equals("2") && !rules.equals("ODPT") && !rules.equals("CT")) {
       System.out.println("1. Player vs Player \n2. Player Vs AI \n");
       gameMode = input.nextLine();
+      System.out.println("Rules : \nOne move per turn (ODPT) \nContinuous turn if win a square (CT)");
+      rules = input.nextLine();
     }
-    if (gameMode.equals("1")) {
-      personVsPerson();
-    } else {
-      personVsAI();
+    if (rules.equals("ODPT")) {
+      if (gameMode.equals("1")) {
+        personVsPerson(rules);
+      } else {
+        personVsAI(rules);
+      }
+    } else if (rules.equals("CT")) {
+      if (gameMode.equals("1")) {
+        personVsPerson(rules);
+      } else {
+        personVsAI(rules);
+      }
     }
 
   }
