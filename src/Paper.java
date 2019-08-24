@@ -182,7 +182,7 @@ public class Paper {
 
   public boolean needsToBeFilled(int x, int y) {
     //need to write an assert comment here
-    return plane[y][x - 1] != ' ' && plane[y][x + 1] != ' ' && plane[y - 1][x] != ' ' && plane[y + 1][x] != ' ';
+    return plane[y][x - 1] != ' ' && plane[y][x + 1] != ' ' && plane[y - 1][x] != ' ' && plane[y + 1][x] != ' ' && isBlank(x, y);
 
   }
 
