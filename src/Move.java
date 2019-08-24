@@ -28,5 +28,10 @@ public class Move {
   public int hashCode() {
     return x + y;
   }
+
+  @Override
+  public String toString() {
+    return "x: " + x + " y: " + y;
+  }
   //do we need set methods
 }

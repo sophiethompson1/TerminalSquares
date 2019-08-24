@@ -66,11 +66,160 @@ public class Paper {
     return isBlank(x, y) && !isCorner(x, y) && !isMiddle(x, y);
   }
 
+  public boolean hasBeenMarked(int x, int y) {
+    return !isBlank(x, y) && !isCorner(x, y) && !isMiddle(x, y);
+  }
+
+  public int madeAThree(int x, int y) { //returning how many threes that were ade
+    int count = 0;
+    if (x%2 == 1 && y%2 == 0) { //this is a sideways dash -
+      //check square above and below
+      //square above
+      if (y > 1) { //wont have a square above it being careful of array access
+        if (this.hasBeenMarked(x - 1, y - 1) && this.hasBeenMarked(x, y -2) && this.isMarkable(x + 1, y -1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x, y - 2) && this.hasBeenMarked(x + 1, y -1) && this.isMarkable(x - 1, y -1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked( x +1, y - 1) && this.isMarkable(x, y -2)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+      }
+      //square below
+      if (y < height - 1) { //dpesnt have a square below careful of array access
+        if (this.hasBeenMarked(x -1 , y +1) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x, y +2)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x -1, y +1) && this.hasBeenMarked(x, y + 2) && this.isMarkable(x + 1, y + 1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x -1, y +1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+      }
+    } else if (x%2 == 0 && y %2 == 1) { //this is a dash like |
+      //square to left and right
+      //left of dahs
+      if (x > 1) { //makes sure its not side array access
+        if (this.hasBeenMarked(x -1, y -1) && this.hasBeenMarked(x -1, y + 1) && this.isMarkable(x -2, y)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x -1, y -1) && this.hasBeenMarked(x -2, y) && this.isMarkable(x -1, y + 1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x -1, y+1) && this.hasBeenMarked(x -2 , y) && this.isMarkable(x -1, y - 1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+      }
+
+      //right of it
+      if (x < width - 1) {
+        if (this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x + 1, y +1) && this.isMarkable(x + 2, y)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked( x + 1, y - 1) && this.hasBeenMarked( x + 2, y) && this.isMarkable(x + 1, y +1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+        if (this.hasBeenMarked(x + 1, y + 1) && this.hasBeenMarked( x + 2, y) && this.isMarkable(x + 1, y - 1)) {
+          count++;
+          System.out.println("Boo" + x + y);
+        }
+      }
+    }
+    return count;
+  }
+
+  public int howManySquaresMade(int x, int y ) {
+    int count = 0;
+    if (x%2 == 1 && y%2 == 0) { //this is a sideways dash -
+      //check square above and below
+      //square above
+      if (y > 1) { //wont have a square above it being careful of array access
+        if (this.hasBeenMarked(x - 1, y - 1) && this.hasBeenMarked(x, y -2) && this.hasBeenMarked(x + 1, y -1)) {
+          count++;
+          System.out.println("Woo1" + x + y);
+        }
+        if (this.hasBeenMarked(x, y - 2) && this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x - 1, y -1)) {
+          count++;
+          System.out.println("Woo2" + x + y);
+        }
+        if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked( x +1, y - 1) && this.hasBeenMarked(x, y -2)) {
+          count++;
+          System.out.println("Woo3" + x + y);
+        }
+      }
+      //square below
+      if (y < height - 1) { //dpesnt have a square below careful of array access
+        if (this.hasBeenMarked(x -1 , y +1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x, y +2)) {
+          count++;
+          System.out.println("Woo" + x + y);
+        }
+        if (this.hasBeenMarked(x -1, y +1) && this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y + 1)) {
+          count++;
+          System.out.println("Woo" + x + y);
+        }
+        if (this.hasBeenMarked(x, y + 2) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x -1, y +1)) {
+          count++;
+          System.out.println("Woo" + x + y);
+        }
+      }
+    } else if (x%2 == 0 && y %2 == 1) { //this is a dash like |
+      //square to left and right
+      //left of dahs
+      if (x > 1) { //makes sure its not side array access
+        if (this.hasBeenMarked(x - 1, y -1) && this.hasBeenMarked(x -1, y + 1) && this.hasBeenMarked(x -2, y)) {
+          count++;
+          System.out.println("Woo7" + x + y);
+        }
+      }
+
+      //right of it
+      if (x < width - 1) {
+        if (this.hasBeenMarked(x + 1, y -1) && this.hasBeenMarked(x + 1, y +1) && this.hasBeenMarked(x + 2, y)) {
+          count++;
+          System.out.println("Woo10" + x + y);
+        }
+        if (this.hasBeenMarked( x + 1, y - 1) && this.hasBeenMarked( x + 2, y) && this.hasBeenMarked(x + 1, y +1)) {
+          count++;
+          System.out.println("Woo11" + x + y);
+        }
+        if (this.hasBeenMarked(x + 1, y + 1) && this.hasBeenMarked( x + 2, y) && this.hasBeenMarked(x + 1, y - 1)) {
+          count++;
+          System.out.println("Woo12" + x + y);
+        }
+      }
+    }
+    return count;
+  }
 
   public boolean needsToBeFilled(int x, int y) {
     //need to write an assert comment here
     return plane[y][x - 1] != ' ' && plane[y][x + 1] != ' ' && plane[y - 1][x] != ' ' && plane[y + 1][x] != ' ';
 
+  }
+
+  public int howManyMiddleEmpty() {
+    int count = 0;
+    for (int y = 1; y < height*(2 - 1); y = y + 2) { //may as well start from 1
+      for (int x = 1; x < width * (2 - 1); x = x + 2) {
+        if (plane[y][x] == ' '){
+          count++;
+        }
+      }
+    }
+    return count;
   }
 
   public int fillIn(char c) {
