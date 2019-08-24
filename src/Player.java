@@ -20,6 +20,17 @@ public class Player {
     return score;
   }
 
+  public Move takeTurn(Paper paper) {
+    Scanner input = new Scanner(System.in);
+
+    while (paper.isCorner(x, y) || !paper.isBlank(x, y) || paper.isMiddle(x, y)) { //if both even then it is a corner
+      System.out.println("X: ");
+      x = Integer.parseInt(input.nextLine());
+      System.out.println("Y: ");
+      y = Integer.parseInt(input.nextLine());
+    }
+  }
+
   public void scored() {
     score++;
   }

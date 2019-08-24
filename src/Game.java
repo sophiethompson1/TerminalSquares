@@ -17,6 +17,11 @@ public class Game {
     this.paper = new Paper(4, 4);
   }
 
+  public Game(Player player1) {
+    this.player1 = player1;
+    this.player2 =
+  }
+
   public Paper getPaper() {
     return paper;
   }
@@ -38,7 +43,7 @@ public class Game {
     }
   }
 
-  public void runGame() {
+  public void runNormalGame() {
     Scanner input = new Scanner(System.in);
 
     System.out.println("\nInitial Grid: ");
@@ -51,19 +56,16 @@ public class Game {
     int howManyFilledIn = 0;
 
     while(!paper.isFinished()) {
+      Move move;
       System.out.println(player1.getName() + ": " + player1.getScore() + " " + player2.getName() + ": " + player2.getScore());
       if (count % 2 == 0) {
         System.out.println(player1.getName() + "'s Turn");
+        move = player1.takeTurn();
       } else {
         System.out.println(player2.getName() + "'s Turn");
+        move = player2.takeTurn();
       }
 
-      while (paper.isCorner(x, y) || !paper.isBlank(x, y) || paper.isMiddle(x, y)) { //if both even then it is a corner
-        System.out.println("X: ");
-        x = Integer.parseInt(input.nextLine());
-        System.out.println("Y: ");
-        y = Integer.parseInt(input.nextLine());
-      }
       char c = ' ';
       if (count % 2 == 0) {
         c = player1.getMark();
